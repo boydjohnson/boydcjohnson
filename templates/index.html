@@ -15,7 +15,7 @@
   integrity=
   "sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
   crossorigin="anonymous">
-  <link rel="stylesheet" href="css/page.css">
+  <link rel="stylesheet" href={{ get_url(path="css/page.css") }}>
 </head>
 <body>
   <svg class="viewport">
@@ -24,7 +24,7 @@
   <nav class="nav navigation-links d-none d-sm-inline-flex">
     <a href="#services" class="nav-link h3">Services</a>
     <a href="#about" class="nav-link h3">About</a>
-    <a href="/blog" class="nav-link h3"> Blog</a>
+    <a href={{ get_url(path="./blog/_index.md") }} class="nav-link h3"> Blog</a>
   </nav>
   <div class="name-title">
     <p class="name">Boyd Johnson</p>
@@ -97,9 +97,9 @@
       </div>
       <div class="col-xs-2 col-md-4 card bg-light">
           <div class="card-body">
-              <a href="https://github.com/boydjohnson"><img class="img-fluid img-rounded w-25" src="img/Octocat.png" /></a>
+              <a href="https://github.com/boydjohnson"><img class="img-fluid img-rounded w-25" src={{ get_url(path="img/Octocat.png") }} /></a>
               <span class="card-text text-center"><h4>boyd</h4><h6>[dot]</h6><h4>charles</h4><h6>[dot]</h6><h4>johnson</h4><h6>[at]</h6><h4>gmail</h4><h6>[dot]</h6><h4>com</h4></span>
-              <a href="https://linkedin.com/in/boydjohnson2"><img class="img-fluid img-rounded w-25 float-right" src="img/In-2C-34px-TM.png" /></a>
+              <a href="https://linkedin.com/in/boydjohnson2"><img class="img-fluid img-rounded w-25 float-right" src={{ get_url(path="img/In-2C-34px-TM.png") }} /></a>
           </div>
       </div>
       <div class="col-xs-4 col-md-4 card bg-light">
