@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Blog: Boyd Johnson - Custom Software</title>
+    <meta name="description" content="Blog for Boyd Johnson - Custom Software">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col-xs-2 col-md-2"></div>
+              <div class="col-xs-10 col-md-10">
+                    <ul>
+                        {% for h1 in section.toc %}
+                            <li>
+                                <a href="{{h1.permalink | safe}}">{{ h1.title }}</a>
+                                {% if h1.children %}
+                                    <ul>
+                                        {% for h2 in h1.children %}
+                                            <li>
+                                                <a href="{{h2.permalink | safe}}">{{ h2.title }}</a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+              </div>
+              <div class="col-xs-2 col-md-2"></div>
+          </div>
+      </div>
+    
+  </body>
+</html>
