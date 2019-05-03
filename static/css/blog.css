@@ -1,0 +1,8 @@
+body {
+    background-color: #F8F9FA;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.bordered {
+    border: 1px solid black;
+}

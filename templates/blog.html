@@ -2,28 +2,26 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Blog: Boyd Johnson - Custom Software</title>
+    <title>{{ section.title }}</title>
     <meta name="description" content="Blog for Boyd Johnson - Custom Software">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  </head>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
+    <link rel="stylesheet" href="{{ get_url(path='css/blog.css') }}" />
+</head>
   <body>
       <div class="container-fluid">
+          <nav class="navbar nav">
+            <div class="brand"><a href="{{ config.base_url }}">Boyd Johnson Custom Software</a></div>
+          </nav>
           <div class="row">
               <div class="col-xs-2 col-md-2"></div>
               <div class="col-xs-10 col-md-10">
+                  <h3>Blog posts</h3>
                     <ul>
-                        {% for h1 in section.toc %}
+                        {% for page in paginator.pages %}
                             <li>
-                                <a href="{{h1.permalink | safe}}">{{ h1.title }}</a>
-                                {% if h1.children %}
-                                    <ul>
-                                        {% for h2 in h1.children %}
-                                            <li>
-                                                <a href="{{h2.permalink | safe}}">{{ h2.title }}</a>
-                                            </li>
-                                        {% endfor %}
-                                    </ul>
-                                {% endif %}
+                                <a href="{{page.permalink | safe}}">{{ page.title }}</a>
+                                <p>{{ page.description }}</p>
                             </li>
                         {% endfor %}
                     </ul>
