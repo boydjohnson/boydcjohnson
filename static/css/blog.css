@@ -4,5 +4,6 @@ body {
 }
 
 .bordered {
-    border: 1px solid black;
+    border-left: 0.5px solid black;
+    border-right: 0.5px solid black;
 }

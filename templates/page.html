@@ -22,15 +22,17 @@
               <div class="brand"><a href="{{ config.base_url }}">Boyd Johnson Custom Software</a></div>
             </nav>
           <div class="row">
-              <div class="col-xs-2 col-md-2"></div>
-              <div class="col-xs-10 col-md-10 bordered">
-                <h2>{{ page.title }}</h2>
-                <span class="badge badge-info">{{ page.date }}</span>
-    
+              <div class="col-xs-0 col-md-2"></div>
+              <div class="col-xs-12 col-md-8 bordered">
+                <div class="card-header">
+                  <h2>{{ page.title }}</h2>
+                  <span class="badge badge-info">{{ page.date }}</span>
+                </div>
+                <div class="card-body">
                   {{ page.content | safe }}
-
+                </div>
               </div>
-              <div class="col-xs-2 col-md-2"></div>
+              <div class="col-xs-0 col-md-2"></div>
           </div>
       </div>
     
