@@ -1,12 +1,11 @@
 +++
 title = "Improving my GIS data science workflow by building tools"
 description = "Thematic Map, cli tools, GIS"
-author = "Boyd Johnson @boydjohnson04"
+author = "Boyd Johnson"
 date = 2019-05-03
 
 [taxonomies]
 tags = ["GIS", "cli tools"]
-categories = ["GIS"]
 +++
 
 I set myself to a project of exploring some data sets and to quickly make a choropleth that shows that exploration. When I do that I usually use command line tools like [ogrinfo](https://github.com/dwtkns/gdal-cheat-sheet). The project goals were to identify areas where I couldn't find a command line tool to use, and make that tool. I am exploring Minnesota Block Group level Census data in combination with location of educational institutions.
