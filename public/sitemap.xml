@@ -4,10 +4,22 @@
   
   <url>
     <loc>/blog/</loc>
+    <lastmod>2019-09-11T00:00:00-05:00</lastmod>
   </url>
   
   <url>
     <loc>/</loc>
+    <lastmod>2019-09-11T00:00:00-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/custom-maps/</loc>
+    <lastmod>2019-09-11T00:00:00-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/making-a-choropleth-with-cli-tools/</loc>
+    <lastmod>2019-05-03T00:00:00-05:00</lastmod>
   </url>
   
   <url>

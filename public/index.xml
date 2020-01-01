@@ -5,17 +5,28 @@
     <link>/</link>
     <description>Recent content in Boyd Johnson&#39;s Blog on </description>
     <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 11 Sep 2019 00:00:00 -0500</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Blog: Boyd Johnson - Custom Software</title>
-      <link>/blog/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>Custom map making with tilemill</title>
+      <link>/blog/custom-maps/</link>
+      <pubDate>Wed, 11 Sep 2019 00:00:00 -0500</pubDate>
       
-      <guid>/blog/</guid>
-      <description>This is other stuff</description>
+      <guid>/blog/custom-maps/</guid>
+      <description>In my previous blog post, the map was made using R. I have now been exploring Tilemill. I have made around 5 maps and have two maps to share here.
+The first map is a map of Minneapolis, MN libraries and their relationship with bus lines. The map is designed to be useful to those who would like to explore libraries that they are not familiar with and would like to use the buslines.</description>
+    </item>
+    
+    <item>
+      <title>Improving my GIS data science workflow by building tools</title>
+      <link>/blog/making-a-choropleth-with-cli-tools/</link>
+      <pubDate>Fri, 03 May 2019 00:00:00 -0500</pubDate>
+      
+      <guid>/blog/making-a-choropleth-with-cli-tools/</guid>
+      <description>I set myself to a project of exploring some data sets and to quickly make a choropleth that shows that exploration. When I do that I usually use command line tools like ogrinfo. The project goals were to identify areas where I couldn&#39;t find a command line tool to use, and make that tool. I am exploring Minnesota Block Group level Census data in combination with location of educational institutions.</description>
     </item>
     
   </channel>
