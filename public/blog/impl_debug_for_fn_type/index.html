@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
-    <title>  | Improving my GIS data science workflow by building tools</title>
+    <title>  | Debug for Fn, FnOnce, FnMut</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
     <meta name="generator" content="Hugo 0.61.0" />
     
@@ -25,23 +25,23 @@
 
     
     
-    <meta property="og:title" content="Improving my GIS data science workflow by building tools" />
-<meta property="og:description" content="Thematic Map, cli tools, GIS" />
+    <meta property="og:title" content="Debug for Fn, FnOnce, FnMut" />
+<meta property="og:description" content="Rust: How to impl Debug for Fn, FnOnce, FnMut" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/blog/making-a-choropleth-with-cli-tools/" />
-<meta property="article:published_time" content="2019-05-03T00:00:00-05:00" />
-<meta property="article:modified_time" content="2019-05-03T00:00:00-05:00" />
-<meta itemprop="name" content="Improving my GIS data science workflow by building tools">
-<meta itemprop="description" content="Thematic Map, cli tools, GIS">
-<meta itemprop="datePublished" content="2019-05-03T00:00:00-05:00" />
-<meta itemprop="dateModified" content="2019-05-03T00:00:00-05:00" />
-<meta itemprop="wordCount" content="177">
+<meta property="og:url" content="/blog/impl_debug_for_fn_type/" />
+<meta property="article:published_time" content="2020-01-14T00:00:00-06:00" />
+<meta property="article:modified_time" content="2020-01-14T00:00:00-06:00" />
+<meta itemprop="name" content="Debug for Fn, FnOnce, FnMut">
+<meta itemprop="description" content="Rust: How to impl Debug for Fn, FnOnce, FnMut">
+<meta itemprop="datePublished" content="2020-01-14T00:00:00-06:00" />
+<meta itemprop="dateModified" content="2020-01-14T00:00:00-06:00" />
+<meta itemprop="wordCount" content="195">
 
 
 
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Improving my GIS data science workflow by building tools"/>
-<meta name="twitter:description" content="Thematic Map, cli tools, GIS"/>
+<meta name="twitter:title" content="Debug for Fn, FnOnce, FnMut"/>
+<meta name="twitter:description" content="Rust: How to impl Debug for Fn, FnOnce, FnMut"/>
 
   </head>
 
@@ -112,41 +112,55 @@
           
         
       </p>
-      <h1 class="f1 athelas mb1">Improving my GIS data science workflow by building tools</h1>
+      <h1 class="f1 athelas mb1">Debug for Fn, FnOnce, FnMut</h1>
       
       <p class="tracked">
          By <strong>Boyd Johnson</strong>
       </p>
       
       
-      <time class="f6 mv4 dib tracked" datetime="2019-05-03T00:00:00-05:00">May 3, 2019</time>
+      <time class="f6 mv4 dib tracked" datetime="2020-01-14T00:00:00-06:00">January 14, 2020</time>
       
       
         <span class="f6 mv4 dib tracked"> - 1 minutes read</span>
-        <span class="f6 mv4 dib tracked"> - 177 words</span>
+        <span class="f6 mv4 dib tracked"> - 195 words</span>
       
     </header>
 
-    <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><p>I set myself to a project of exploring some data sets and to quickly make a choropleth that shows that exploration. When I do that I usually use command line tools like <a href="https://github.com/dwtkns/gdal-cheat-sheet">ogrinfo</a>. The project goals were to identify areas where I couldn't find a command line tool to use, and make that tool. I am exploring Minnesota Block Group level Census data in combination with location of educational institutions.</p>
-<p>First up, queries that I know how to do:</p>
-<h3 id="non-spatial-summary-statistics-on-a-single-table">non-spatial summary statistics on a single table</h3>
-<h4 id="min-max-avg-2016-population-estimate-for-each-block-group-in-minnesota">Min, Max, Avg 2016 Population Estimate for each Block Group in Minnesota</h4>
-<figure>
-    <img src="images/ogrinfo-summary-statistics.gif"/> 
-</figure>
+    <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><p>A good rule in Rust is that every struct should have <code>std::debug::Debug</code>. But what if that struct contains closures.</p>
+<p>I initially had a struct that looked like:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Move</span> {
+    from: <span style="color:#a6e22e">CardIndex</span>,
+    to: <span style="color:#a6e22e">CardIndex</span>,
+    on_after: Option<span style="color:#f92672">&lt;</span>DisplayFn<span style="color:#f92672">&gt;</span>,
+    on_after_reverse: Option<span style="color:#f92672">&lt;</span>DisplayFn<span style="color:#f92672">&gt;</span>,
+}
 
-<p>I wondered about population in combination with the distance to the nearest educational institution. I chose Junior Colleges from my data set to be specific. This is where I am missing a tool that I can quickly leverage to make a spatial join, so I worked on building it. Enter <code>ndjson-spatial</code>:</p>
-<h3 id="spatial-metrics-on-two-tables">spatial metrics on two tables</h3>
-<h4 id="distance-to-nearest-junior-college-from-centroid-of-block-group-minnesota">Distance to nearest Junior College from centroid of Block Group, Minnesota</h4>
-<figure>
-    <img src="images/ndjson-spatial-optimized.gif"/> 
-</figure>
+<span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">type</span> <span style="color:#a6e22e">DisplayFn</span> <span style="color:#f92672">=</span> Box<span style="color:#f92672">&lt;</span>dyn FnOnce(<span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> Card)<span style="color:#f92672">&gt;</span>;
+</code></pre></div><p>The usecase for this code is a cardgame that has an undo button. When a card moves, its display may change, but when undo happens its display needs to be reversed.</p>
+<p>If we try to derive Debug for it, we will get a compiler error because FnOnce does not impl Debug.</p>
+<p>The solution is to declare a trait that has FnOnce and impl it for all functions that have FnOnce, and then impl Debug for that trait.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">trait</span> DisplayFnT: FnOnce(<span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> Card);
 
-<h3 id="thematic-map-showing-distance-to-nearest-junior-college-multiplied-by-population-estimate">Thematic Map showing distance to nearest Junior College multiplied by population estimate</h3>
-<figure>
-    <img src="images/minnesota-distance-to-junior-colleges.png"/> 
-</figure>
+<span style="color:#66d9ef">impl</span><span style="color:#f92672">&lt;</span>F<span style="color:#f92672">&gt;</span> DisplayFnT <span style="color:#66d9ef">for</span> F <span style="color:#66d9ef">where</span> F: FnOnce(<span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> Card) { }
 
+<span style="color:#66d9ef">impl</span> std::fmt::Debug <span style="color:#66d9ef">for</span> DisplayFnT {
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">fmt</span>(<span style="color:#f92672">&amp;</span>self, f: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">mut</span> std::fmt::Formatter<span style="color:#f92672">&lt;</span><span style="color:#a6e22e">&#39;_</span><span style="color:#f92672">&gt;</span>) -&gt; <span style="color:#a6e22e">std</span>::fmt::Result {
+        write<span style="color:#f92672">!</span>(f, <span style="color:#e6db74">&#34;DisplayFunction&#34;</span>)
+    }
+}
+
+<span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">type</span> <span style="color:#a6e22e">DisplayFn</span> <span style="color:#f92672">=</span> Box<span style="color:#f92672">&lt;</span>dyn DisplayFnT<span style="color:#f92672">&gt;</span>;
+</code></pre></div><p>Then the final struct looks like:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#75715e">#[</span><span style="color:#75715e">derive(Debug)</span><span style="color:#75715e">]</span>
+<span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Move</span> {
+    from: <span style="color:#a6e22e">CardIndex</span>,
+    to: <span style="color:#a6e22e">CardIndex</span>,
+    on_after: Option<span style="color:#f92672">&lt;</span>DisplayFn<span style="color:#f92672">&gt;</span>,
+    on_after_reverse: Option<span style="color:#f92672">&lt;</span>DisplayFn<span style="color:#f92672">&gt;</span>,
+}
+
+</code></pre></div><p>I got the solution to this problem from <a href="https://users.rust-lang.org/t/is-it-possible-to-implement-debug-for-fn-type/14824">this users.rust-lang.org question and answer.</a></p>
 <ul class="pa0">
   
 </ul>

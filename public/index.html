@@ -9,6 +9,7 @@
     <meta name="generator" content="Hugo 0.61.0" />
     
     
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
     
 
     
@@ -33,7 +34,7 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="/" />
-<meta property="og:updated_time" content="2019-09-11T00:00:00-05:00" />
+<meta property="og:updated_time" content="2020-01-14T00:00:00-06:00" />
 <meta itemprop="name" content="Boyd Johnson&#39;s Blog">
 <meta itemprop="description" content=""><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Boyd Johnson&#39;s Blog"/>
@@ -139,6 +140,32 @@
       
       <div class="blah w-100">
         <h1 class="f3 fw1 athelas mt0 lh-title">
+          <a href="/blog/impl_debug_for_fn_type/" class="color-inherit dim link">
+            Debug for Fn, FnOnce, FnMut
+            </a>
+        </h1>
+        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+          A good rule in Rust is that every struct should have std::debug::Debug. But what if that struct contains closures.
+I initially had a struct that looked like:
+pub struct Move { from: CardIndex, to: CardIndex, on_after: Option&lt;DisplayFn&gt;, on_after_reverse: Option&lt;DisplayFn&gt;, } pub type DisplayFn = Box&lt;dyn FnOnce(&amp;mut Card)&gt;; The usecase for this code is a cardgame that has an undo button. When a card moves, its display may change, but when undo happens its display needs to be reversed.
+        </div>
+          <a href="/blog/impl_debug_for_fn_type/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+          </div>
+        
+          <div class="relative w-100 mb4">
+            
+<article class="bb b--black-10">
+  <div class="db pv4 ph3 ph0-l no-underline dark-gray">
+    <div class="flex flex-column flex-row-ns">
+      
+      <div class="blah w-100">
+        <h1 class="f3 fw1 athelas mt0 lh-title">
           <a href="/blog/custom-maps/" class="color-inherit dim link">
             Custom map making with tilemill
             </a>
@@ -191,7 +218,7 @@ The first map is a map of Minneapolis, MN libraries and their relationship with 
     <footer class="bg-dark-blue bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
   <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="" >
-    &copy; 2019 
+    &copy; 2020 
   </a>
     <div>
 
@@ -230,15 +257,6 @@ The first map is a map of Minneapolis, MN libraries and their relationship with 
     
 
   <script src="/dist/js/app.3fc0f988d21662902933.js"></script>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-139565870-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-139565870-1');
-</script>
 
 
   </body>
