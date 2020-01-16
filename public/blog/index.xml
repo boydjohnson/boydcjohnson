@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title></title>
-    <link>/blog/</link>
+    <link>https://boydjohnson.dev/blog/</link>
     <description>Recent content on </description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Tue, 14 Jan 2020 00:00:00 -0600</lastBuildDate>
     
-	<atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://boydjohnson.dev/blog/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Debug for Fn, FnOnce, FnMut</title>
-      <link>/blog/impl_debug_for_fn_type/</link>
+      <link>https://boydjohnson.dev/blog/impl_debug_for_fn_type/</link>
       <pubDate>Tue, 14 Jan 2020 00:00:00 -0600</pubDate>
       
-      <guid>/blog/impl_debug_for_fn_type/</guid>
+      <guid>https://boydjohnson.dev/blog/impl_debug_for_fn_type/</guid>
       <description>A good rule in Rust is that every struct should have std::debug::Debug. But what if that struct contains closures.
 I initially had a struct that looked like:
 pub struct Move { from: CardIndex, to: CardIndex, on_after: Option&amp;lt;DisplayFn&amp;gt;, on_after_reverse: Option&amp;lt;DisplayFn&amp;gt;, } pub type DisplayFn = Box&amp;lt;dyn FnOnce(&amp;amp;mut Card)&amp;gt;; The usecase for this code is a cardgame that has an undo button. When a card moves, its display may change, but when undo happens its display needs to be reversed.</description>
@@ -23,20 +23,20 @@ pub struct Move { from: CardIndex, to: CardIndex, on_after: Option&amp;lt;Displa
     
     <item>
       <title>Custom map making with tilemill</title>
-      <link>/blog/custom-maps/</link>
+      <link>https://boydjohnson.dev/blog/custom-maps/</link>
       <pubDate>Wed, 11 Sep 2019 00:00:00 -0500</pubDate>
       
-      <guid>/blog/custom-maps/</guid>
+      <guid>https://boydjohnson.dev/blog/custom-maps/</guid>
       <description>In my previous blog post, the map was made using R. I have now been exploring Tilemill. I have made around 5 maps and have two maps to share here.
 The first map is a map of Minneapolis, MN libraries and their relationship with bus lines. The map is designed to be useful to those who would like to explore libraries that they are not familiar with and would like to use the buslines.</description>
     </item>
     
     <item>
       <title>Improving my GIS data science workflow by building tools</title>
-      <link>/blog/making-a-choropleth-with-cli-tools/</link>
+      <link>https://boydjohnson.dev/blog/making-a-choropleth-with-cli-tools/</link>
       <pubDate>Fri, 03 May 2019 00:00:00 -0500</pubDate>
       
-      <guid>/blog/making-a-choropleth-with-cli-tools/</guid>
+      <guid>https://boydjohnson.dev/blog/making-a-choropleth-with-cli-tools/</guid>
       <description>I set myself to a project of exploring some data sets and to quickly make a choropleth that shows that exploration. When I do that I usually use command line tools like ogrinfo. The project goals were to identify areas where I couldn&#39;t find a command line tool to use, and make that tool. I am exploring Minnesota Block Group level Census data in combination with location of educational institutions.</description>
     </item>
     
