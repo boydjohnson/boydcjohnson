@@ -14,8 +14,6 @@ build_search_index = false
 theme = "gohugo-theme-ananke"
 
 [taxonomies]
-category = "categories"
-tag = "tags"
 
 
 [params]
