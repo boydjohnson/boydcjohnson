@@ -1,3 +1,0 @@
-+++
-author = "Boyd Johnson"
-+++
