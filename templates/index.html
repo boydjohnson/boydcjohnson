@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boyd Johnson</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css" />
+</head>
+
+<body class="has-background-grey-lighter" style="min-height: 100vh;">
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-10 is-offset-1">
+                    <nav class="navbar is-danger" role="navigation" aria-label="main navigation">
+                        <div class="navbar-brand">
+                            <a href="/about/" class="navbar-item has-text-weight-bold is-spaced">About</a>
+                            <a href="/blog/" class="navbar-item has-text-weight-bold is-spaced">Blog</a>
+                            <a href="/tags/" class="navbar-item has-text-weight-bold is-spaced">Tags</a>
+                        </div>
+                    </nav>
+                    
+                    <div class="content mt-4">
+                        {{ section.content | safe }}
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
