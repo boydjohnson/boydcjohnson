@@ -16,7 +16,11 @@ First up, queries that I know how to do:
 
 #### Min, Max, Avg 2016 Population Estimate for each Block Group in Minnesota
 
-{{< figure src="images/ogrinfo-summary-statistics.gif" >}}
+<figure class="image">
+
+![ogrinfo gif](ogrinfo-summary-statistics.gif)
+
+</figure>
 
 I wondered about population in combination with the distance to the nearest educational institution. I chose Junior Colleges from my data set to be specific. This is where I am missing a tool that I can quickly leverage to make a spatial join, so I worked on building it. Enter `ndjson-spatial`:
 
@@ -24,8 +28,16 @@ I wondered about population in combination with the distance to the nearest educ
 
 #### Distance to nearest Junior College from centroid of Block Group, Minnesota
 
-{{< figure src="images/ndjson-spatial-optimized.gif" >}}
+<figure class="image">
+
+![ndjson spatial tool gif](ndjson-spatial-optimized.gif)
+
+</figure>
 
 ### Thematic Map showing distance to nearest Junior College multiplied by population estimate
 
-{{< figure src="images/minnesota-distance-to-junior-colleges.png" >}}
+<figure class="image">
+
+![choropleth of MN distance to nearest junior college](minnesota-distance-to-junior-colleges.png)
+
+</figure>

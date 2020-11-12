@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tags - Boyd Johnson</title>
+    <title>{{ page.title }} - Boyd Johnson</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css" />
 </head>
 
@@ -17,18 +17,13 @@
                     <div class="breadcrumb" aria-label="breadcrumbs">
                         <ul>
                             <li><a href="/">Home</a></li>
-                            <li class="is-active"><a href="/tags/" aria-current="page">Tags</a></li>
+                            <li><a href="/blog/">Blog</a></li>
+                            <li class="is-active"><a href="{{ page.path }}" aria-current="page">{{ page.title }}</a></li>
                         </ul>
                     </div>
-                    <h1 class="is-title is-4">Tags</h1>
-                    <div>
-                        <ul>
-                            {% for term in terms %}
-
-                            <li><a href="{{ term.permalink }}">{{ term.name }}</a></li>
-
-                            {% endfor %}
-                        </ul>
+                    <h1 class="title is-1">{{ page.title }}</h1>
+                    <div class="content">
+                        {{ page.content | safe }}
                     </div>
                 </div>
             </div>

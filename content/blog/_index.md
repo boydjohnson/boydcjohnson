@@ -1,8 +1,10 @@
 +++
-title = "Boyd Johnson's Blog"
-sort_by = "none"
+title = "Blog"
 author = "Boyd Johnson"
-redirect_to = ""
+
+sort_by = "date"
+
+template = "section.html"
 +++
 
 
